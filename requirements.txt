@@ -1,0 +1,6 @@
+langchain
+langchain_community
+langchain-aws 
+requests_aws4auth
+opensearch-py
+streamlit
