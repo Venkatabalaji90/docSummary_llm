@@ -55,10 +55,11 @@ def get_response(client_,vectorstore_,message_):
     #print(response_text)
     return response_text
 
-def clear_text():
-    st.session_state["question"] = ""  
+ 
 
 def main():
+    def clear_text():
+        st.session_state["question"] = "" 
     st.title("💬 docAssist.ai ")
     st.header("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
     credentials = boto3.Session(aws_access_key_id=config.access_key_id,aws_secret_access_key=config.secret_access_key,aws_session_token=config.session_token).get_credentials()
