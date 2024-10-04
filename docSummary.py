@@ -66,6 +66,11 @@ def main():
     st.subheader("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
     st.header("Reference Documents:")
     st.markdown("[1.Morgan Stanley](https://www.sec.gov/Archives/edgar/data/895421/000089542124000300/ms-20231231.htm")
+    st.markdown("[2.Goldman Sachs Group, Inc](https://www.sec.gov/Archives/edgar/data/886982/000088698224000006/gs-20231231.htm")
+    st.markdown("[3.Citigroup Inc](https://www.sec.gov/Archives/edgar/data/831001/000083100124000033/c-20231231.htm")
+    st.markdown("[4.JPMorgan Chase & Co](https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm")
+    st.markdown("[5.Bank of America Corporation](https://www.sec.gov/Archives/edgar/data/895421/000089542124000300/ms-20231231.htm")
+    st.markdown("[6.Wells Fargo & Company](https://www.sec.gov/Archives/edgar/data/72971/000007297118000272/wfc-12312017xex13.htm")
     credentials = boto3.Session(aws_access_key_id=config.access_key_id,aws_secret_access_key=config.secret_access_key,aws_session_token=config.session_token).get_credentials()
     awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, config.region, config.open_search_service, session_token=credentials.token)
     bedrock_client = boto3.client(service_name="bedrock-runtime",
@@ -75,11 +80,13 @@ def main():
                                  aws_session_token=credentials.token)
     bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0", region_name="us-east-1",client=bedrock_client)
     #st.write("I AM READY TO HELP !!!!")
-    option = st.selectbox("Choose from Below Entity to Query", options=['None',"JP Morgan", "Goldman Sachs", "BOFA","Morgan Stanley", "CitiBank","Credit Suisse","Wells Fargo"],on_change=clear_text)
+    option = st.selectbox("Choose from Below Entity to Query", 
+                          options=['None',"Morgan Stanley", "Goldman Sachs Group, Inc", "Citigroup Inc","JPMorgan Chase & Co", 
+                                   "Bank of America Corporation","Credit Suisse AG","Wells Fargo & Company"],on_change=clear_text)
     if option != 'None':
         st.write("Selected Entity for Querying:", option)
-        entity_mapping = {"JP Morgan" : 'jpmc', "Goldman Sachs":'gs', "BOFA":'bofa',"Morgan Stanley":'ms',"CitiBank":'cb',
-                          "Credit Suisse":'cs',"Wells Fargo":'wf'}
+        entity_mapping = {"JPMorgan Chase & Co" : 'jpmc', "Goldman Sachs Group, Inc":'gs', "Bank of America Corporation":'bofa',"Morgan Stanley":'ms',"Citigroup Inc":'cb',
+                          "Credit Suisse AG":'cs',"Wells Fargo & Company":'wf'}
         entity_key = entity_mapping[option]
         
         question = st.text_input("Please type your query (minimum 10 charater)",key="question")
