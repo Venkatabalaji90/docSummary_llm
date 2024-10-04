@@ -87,7 +87,7 @@ def main():
             with st.spinner("Querying..."):
                 index_name = entity_key +"_vector_store"
                 vector_store = retrieve_vector_obj(awsauth,index_name,config.open_search_url,bedrock_embeddings)
-                st.write(get_response(bedrock_client,vector_store, question))
+                st.write(get_response(bedrock_client,vector_store, question.strip()))
                 st.success("Done")
         else:
             st.write("Please Enter your Query")
