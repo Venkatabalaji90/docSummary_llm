@@ -67,27 +67,25 @@ def main():
                                  aws_session_token=credentials.token)
     bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0", region_name="us-east-1",client=bedrock_client)
     #st.write("I AM READY TO HELP !!!!")
-    option = st.selectbox("Choose from Below Entity to Query",
-                          ("JP Morgan", "Goldman Sachs", "BOFA","Morgan Stanley", "CitiBank","Credit Suisse","Wells Fargo"),
-                          index=None,
-                          placeholder="Please choose the Entity here")
-    st.write("Selected Entity for Querying:", option)
-    entity_mapping = {"JP Morgan" : 'jpmc', "Goldman Sachs":'gs', "BOFA":'bofa',"Morgan Stanley":'ms',"CitiBank":'cb',
-                      "Credit Suisse":'cs',"Wells Fargo":'wf'}
-    entity_key = entity_mapping[option]
-    
-    question = st.text_input("Please type your query (minimum 10 charater)")
-    
-    if st.button("Ask Question"):
-        if len(question) > 0:
-            with st.spinner("Querying..."):
-                index_name = entity_key +"_vector_store"
-                vector_store = retrieve_vector_obj(awsauth,index_name,config.open_search_url,bedrock_embeddings)
-                st.write(get_response(bedrock_client,vector_store, question.strip()))
+    option = st.selectbox("Choose from Below Entity to Query", options=['None',"JP Morgan", "Goldman Sachs", "BOFA","Morgan Stanley", "CitiBank","Credit Suisse","Wells Fargo"])
+    if option != 'None'
+        st.write("Selected Entity for Querying:", option)
+        entity_mapping = {"JP Morgan" : 'jpmc', "Goldman Sachs":'gs', "BOFA":'bofa',"Morgan Stanley":'ms',"CitiBank":'cb',
+                          "Credit Suisse":'cs',"Wells Fargo":'wf'}
+        entity_key = entity_mapping[option]
+        
+        question = st.text_input("Please type your query (minimum 10 charater)")
+        
+        if st.button("Ask Question"):
+            if len(question) > 0:
+                with st.spinner("Querying..."):
+                    index_name = entity_key +"_vector_store"
+                    vector_store = retrieve_vector_obj(awsauth,index_name,config.open_search_url,bedrock_embeddings)
+                    st.write(get_response(bedrock_client,vector_store, question.strip()))
+                    st.success("Done")
+            else:
+                st.write("Please Enter your Query")
                 st.success("Done")
-        else:
-            st.write("Please Enter your Query")
-            st.success("Done")
 
 if __name__ == "__main__":
     main()
