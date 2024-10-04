@@ -58,6 +58,8 @@ def get_response(client_,vectorstore_,message_):
  
 
 def main():
+    if "question" not in st.session_state:
+        st.session_state["question"] = ""
     def clear_text():
         st.session_state["question"] = "" 
     st.title("💬 docAssist.ai ")
