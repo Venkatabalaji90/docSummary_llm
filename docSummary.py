@@ -63,7 +63,9 @@ def main():
     def clear_text():
         st.session_state["question"] = "" 
     st.title("💬 docAssist.ai ")
-    st.header("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
+    st.subheader("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
+    st.header("Reference Documents:")
+    st.markdown("[1.Morgan Stanley](https://www.sec.gov/Archives/edgar/data/895421/000089542124000300/ms-20231231.htm")
     credentials = boto3.Session(aws_access_key_id=config.access_key_id,aws_secret_access_key=config.secret_access_key,aws_session_token=config.session_token).get_credentials()
     awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, config.region, config.open_search_service, session_token=credentials.token)
     bedrock_client = boto3.client(service_name="bedrock-runtime",
