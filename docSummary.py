@@ -73,8 +73,9 @@ def main():
                                      "BOFA",
                                      "Morgan Stanley", 
                                      "CitiBank","Credit Suisse","Wells Fargo"),
+                          index=None,
                           placeholder="Please choose a value here")
-    
+    st.write("Selected Entity for Querying:", option)
     entity_mapping = {"JP Morgan" : 'jpmc', "Goldman Sachs":'gs', "BOFA":'bofa',"Morgan Stanley":'ms',"CitiBank":'cb',
                       "Credit Suisse":'cs',"Wells Fargo":'wf'}
     entity_key = entity_mapping[option]
