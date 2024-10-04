@@ -54,7 +54,10 @@ def get_response(client_,vectorstore_,message_):
     response_text = response["output"]["message"]["content"][0]["text"]
     #print(response_text)
     return response_text
-    
+
+def clear_text():
+    st.session_state["question"] = ""  
+
 def main():
     st.title("💬 docAssist.ai ")
     st.header("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
@@ -67,7 +70,7 @@ def main():
                                  aws_session_token=credentials.token)
     bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0", region_name="us-east-1",client=bedrock_client)
     #st.write("I AM READY TO HELP !!!!")
-    option = st.selectbox("Choose from Below Entity to Query", options=['None',"JP Morgan", "Goldman Sachs", "BOFA","Morgan Stanley", "CitiBank","Credit Suisse","Wells Fargo"])
+    option = st.selectbox("Choose from Below Entity to Query", options=['None',"JP Morgan", "Goldman Sachs", "BOFA","Morgan Stanley", "CitiBank","Credit Suisse","Wells Fargo"],on_change=clear_text)
     if option != 'None':
         st.write("Selected Entity for Querying:", option)
         entity_mapping = {"JP Morgan" : 'jpmc', "Goldman Sachs":'gs', "BOFA":'bofa',"Morgan Stanley":'ms',"CitiBank":'cb',
