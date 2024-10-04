@@ -68,7 +68,7 @@ def main():
     bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0", region_name="us-east-1",client=bedrock_client)
     #st.write("I AM READY TO HELP !!!!")
     option = st.selectbox("Choose from Below Entity to Query", options=['None',"JP Morgan", "Goldman Sachs", "BOFA","Morgan Stanley", "CitiBank","Credit Suisse","Wells Fargo"])
-    if option != 'None'
+    if option != 'None':
         st.write("Selected Entity for Querying:", option)
         entity_mapping = {"JP Morgan" : 'jpmc', "Goldman Sachs":'gs', "BOFA":'bofa',"Morgan Stanley":'ms',"CitiBank":'cb',
                           "Credit Suisse":'cs',"Wells Fargo":'wf'}
