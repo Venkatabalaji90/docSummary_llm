@@ -80,7 +80,7 @@ def main():
                           "Credit Suisse":'cs',"Wells Fargo":'wf'}
         entity_key = entity_mapping[option]
         
-        question = st.text_input("Please type your query (minimum 10 charater)")
+        question = st.text_input("Please type your query (minimum 10 charater)",key="question")
         
         if st.button("Ask Question"):
             if len(question) > 0:
