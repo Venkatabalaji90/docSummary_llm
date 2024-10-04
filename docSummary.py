@@ -27,7 +27,7 @@ def get_response(client_,vectorstore_,message_):
     vector_field="vector_field",
     text_field="text",
     metadata_field="metadata",
-    top_k=10,
+    top_k=5,
     script_score={
         "query_vector_boost": 1.0,  
         "metadata_boost": 1.5  
