@@ -31,7 +31,8 @@ def get_response(client_,vectorstore_,message_):
     script_score={
         "query_vector_boost": 1.0,  
         "metadata_boost": 1.5  
-    })
+    },
+    score_threshold=0.75)
     retrieved_text = " ".join([doc.page_content for doc in docs])
 
     # user_message  = """ I'm going to give you a document. Then I'm going to ask you a question about it. I'd like you to understand that this is a 10k report of an organisation, understand the section of the document that would help answer the questions, and then I'd like you to answer the question using facts from the document. Here is the document: \ <document> """ + retrieved_text + """ </document> If you are not able to answer , write "I dont find an answer for this question"."""
