@@ -39,7 +39,7 @@ def get_response(client_,vectorstore_,message_):
     conversation = [
     {
         "role": "user",
-        "content": [{"text": retrieved_text}],
+        "content": [{"text": message_+retrieved_text}],
     }
     ]
 
