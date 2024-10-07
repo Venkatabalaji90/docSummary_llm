@@ -82,11 +82,11 @@ def main():
     #st.write("I AM READY TO HELP !!!!")
     option = st.selectbox("Choose from Below Entity to Query", 
                           options=['None',"Morgan Stanley", "Goldman Sachs Group, Inc", "Citigroup Inc","JPMorgan Chase & Co", 
-                                   "Bank of America Corporation","Credit Suisse AG","Wells Fargo & Company"],on_change=clear_text)
+                                   "Bank of America Corporation","Credit Suisse AG","Wells Fargo & Company","ITC","INFOSYS"],on_change=clear_text)
     if option != 'None':
         st.write("Selected Entity for Querying:", option)
         entity_mapping = {"JPMorgan Chase & Co" : 'jpmc', "Goldman Sachs Group, Inc":'gs', "Bank of America Corporation":'bofa',"Morgan Stanley":'ms',"Citigroup Inc":'cb',
-                          "Credit Suisse AG":'cs',"Wells Fargo & Company":'wf'}
+                          "Credit Suisse AG":'cs',"Wells Fargo & Company":'wf',"ITC":'itc',"INFOSYS":'infy'}
         entity_key = entity_mapping[option]
         
         question = st.text_input("Please type your query (minimum 10 charater)",key="question")
