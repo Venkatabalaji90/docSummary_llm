@@ -63,7 +63,7 @@ def main():
     def clear_text():
         st.session_state["question"] = "" 
     st.title("💬 QueryAI ")
-    st.subheader("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
+    st.subheader("Hi, I'm Docy ,Here to assist in answering your queries from Finanacial Earnings Reports.")
     st.header("Reference Documents:")
     st.markdown("[1.Morgan Stanley](https://www.sec.gov/Archives/edgar/data/895421/000089542124000300/ms-20231231.htm")
     st.markdown("[2.Goldman Sachs Group, Inc](https://www.sec.gov/Archives/edgar/data/886982/000088698224000006/gs-20231231.htm")
