@@ -62,7 +62,7 @@ def main():
         st.session_state["question"] = ""
     def clear_text():
         st.session_state["question"] = "" 
-    st.title("💬 docAssist.ai ")
+    st.title("💬 QueryAI ")
     st.subheader("I am here to assist you on answering your queries from Finanacial Earnings Reports.")
     st.header("Reference Documents:")
     st.markdown("[1.Morgan Stanley](https://www.sec.gov/Archives/edgar/data/895421/000089542124000300/ms-20231231.htm")
